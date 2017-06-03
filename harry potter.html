@@ -1,0 +1,198 @@
+<html>
+<head>
+<title> cherry jackpot game</title>
+<meta charset="UTF-8">
+
+<style>
+.center {
+    position: absolute;
+
+    right=100px;
+    text-align: center;
+    font-size: 40px;
+}
+
+body {
+    background-color: black;
+}
+body
+{
+	background-image : url("http://wallpaperrs.com/uploads/vector-designs/hogwarts-logo-harry-potter-wide-wallpaper-31507.jpg");
+     background-size: 1365px 675px;
+    background-repeat: no-repeat;
+}
+
+h6 {
+   color: yellow;
+    text-shadow: 0 0 1px #FF0000;
+font-style: italic;
+font-weight: bold;
+font-family: georgia, Helvetica, sans-serif;
+}
+.image{
+	width:220px;
+  height: 220px;
+}
+
+.button {
+    background-color: white;
+    border: none;
+    color: black;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: font-style:italic;font-weight: bold;font-family: georgia, Helvetica, sans-serif;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 8px;
+     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+</style>
+</head>
+<body>
+<p id="demo"></p>
+<script type="text/javascript">
+
+var func;
+var Noofspins = 10;
+var images = ['stone', 'wand', 'cloak'];
+
+
+
+function SpinSlots()
+     
+{   var lol=Math.floor(Math.random()*3);
+    //document.getElementById("demo").innerHTML = lol;
+     var lolol=Math.floor(Math.random()*3);
+    //document.getElementById("demo").innerHTML = lol;
+     var lololol=Math.floor(Math.random()*3);
+    //document.getElementById("demo").innerHTML = lol;
+
+	var slot1 = images[lol];
+	var slot2 = images[lolol];
+	var slot3 = images[lololol];
+
+    if(slot1=='stone')
+    {
+        document.getElementById('image1').src ="http://img-new.cgtrader.com/items/9804/the_resurrection_stone_3d_model_3c7e1b97-dae7-41ba-86d2-5f51b42a37ff.jpg";
+    }
+    else if(slot1=='wand')
+    {
+        document.getElementById('image1').src ="http://img.dxcdn.com/productimages/sku_91027_2.jpg";
+    }
+    else if(slot1=='cloak')
+    {
+        document.getElementById('image1').src = "http://www.hoppersgiftware.co.uk/ekmps/shops/southernswords/images/official-harry-potter-cloak-of-invisibilty-11048-p.jpg";
+    }
+
+    
+    if(slot2=='stone')
+    {
+        document.getElementById('image2').src ="http://img-new.cgtrader.com/items/9804/the_resurrection_stone_3d_model_3c7e1b97-dae7-41ba-86d2-5f51b42a37ff.jpg";
+    }
+    else if(slot2=='wand ')
+    {
+        document.getElementById('image2').src ="http://img.dxcdn.com/productimages/sku_91027_2.jpg";
+    }
+    else if(slot2=='cloak')
+    {
+        document.getElementById('image2').src ="http://www.hoppersgiftware.co.uk/ekmps/shops/southernswords/images/official-harry-potter-cloak-of-invisibilty-11048-p.jpg"; 
+    }
+
+    
+    if(slot3=='stone')
+    {
+        document.getElementById('image3').src ="http://img-new.cgtrader.com/items/9804/the_resurrection_stone_3d_model_3c7e1b97-dae7-41ba-86d2-5f51b42a37ff.jpg"
+    }
+    else if(slot3=='wand')
+    {
+        document.getElementById('image3').src ="http://img.dxcdn.com/productimages/sku_91027_2.jpg"
+    }
+    else if(slot3=='cloak')
+    {
+        document.getElementById('image3').src ="http://www.hoppersgiftware.co.uk/ekmps/shops/southernswords/images/official-harry-potter-cloak-of-invisibilty-11048-p.jpg"
+    }
+
+
+
+
+
+	
+        var credits = document.getElementById('credits').innerHTML;
+        --credits; 
+
+	var msg = "YAY!";
+        var color = "red";
+
+
+         
+	if (slot1 == slot2 && slot2 == slot3)
+	{
+	    
+    	    credits +=10;
+            msg = "You can play 10 more times!";
+            color = "blue";
+	}
+	else
+		   msg = "SPIN AGAIN!";
+ 	
+	document.getElementById('credits').innerHTML = credits;
+        document.getElementById("message").innerHTML=msg;
+       
+
+        if ( credits <= 0 )
+        {
+             alert("GAME OVER!");
+        }
+
+     
+}
+
+function shuffle()
+{
+    setTimeout(SpinSlots,50);
+    return;
+   
+}
+
+
+
+function SpinStop()
+{
+	clearTimeout(func);
+}
+function reset()
+{
+	window.location.reload();
+}
+</script>
+
+
+
+<div style="text-align:center">
+<p>
+	<img id="image1" class="image" border=5 alt="slot image"
+	       src="http://img-new.cgtrader.com/items/9804/the_resurrection_stone_3d_model_3c7e1b97-dae7-41ba-86d2-5f51b42a37ff.jpg"/>
+	<img id="image2" class="image" border=5 alt="slot image"
+	       src="http://img.dxcdn.com/productimages/sku_91027_2.jpg"/>
+	<img id="image3" class="image" border=5 alt="slot image"
+	       src="http://www.hoppersgiftware.co.uk/ekmps/shops/southernswords/images/official-harry-potter-cloak-of-invisibilty-11048-p.jpg"/>
+
+</p>
+
+<input type="button" class="button" value="PLAY" onclick="shuffle();">
+<br/><br/>
+<input type="button" class="button" value="STOP" onclick="SpinStop();">
+<br/><br/>
+<input type="button" class="button" value="RESET" onclick="reset();">
+
+<br/><br/>
+<span id="message" style="font-size: xx-large; font-weight: bold; color:white;"></span>
+<br/><br/>
+<span style="font-size: xx-large;font-weight: bold; color:white;">YOUR SCORE :) </span><span id="credits" style="font-size: xx-large;font-weight: bold; color:white;">20</span>
+</p>
+</div>
+</body>
+</html>

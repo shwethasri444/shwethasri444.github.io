@@ -1,0 +1,149 @@
+<html>
+<head>
+<title> cherry jackpot game</title>
+<meta charset="UTF-8">
+<div style="text-align:center">
+<h6 class="center">CHERRY JACKPOT GAME</h6>
+</div>
+<style>
+.center {
+    position: absolute;
+
+    right=100px;
+    text-align: center;
+    font-size: 40px;
+}
+body
+{
+	background: url()
+}
+
+h6 {
+   color: yellow;
+    text-shadow: 0 0 1px #FF0000;
+font-style: italic;
+font-weight: bold;
+font-family: georgia, Helvetica, sans-serif;
+}
+.image{
+	width:250px;
+  height: 250px;
+}
+
+.button {
+    background-color: green;
+    border: none;
+    color: black;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+</style>
+<script type="text/javascript" src="'http://rs1233.pbsrc.com/albums/random.js"></script>
+</head>
+<body>
+<script type="text/javascript">
+
+var minimum=0;
+var func;
+var Noofspins = 0;
+var images = ['fruits-11-jerusalem', 'fruits-12-berry-jerusalem', 'fruits-13-jerusalem'];
+
+function SpinSlots()
+     
+{
+	
+	if ( Noofspins == 0 ) Noofspins = 10 + Math.floor( 20 * Math.random() +1);
+
+	var slot1 = RandomOneOf(images);
+	var slot2 = RandomOneOf(images);
+	var slot3 = RandomOneOf(images);
+
+	document.getElementById('image1').src =
+	'http://rs1233.pbsrc.com/albums/ff400/Ben_Yassa/fruits%20and%20veggies/' + slot1 + '.jpg~c200';
+	document.getElementById('image2').src =
+	'http://rs1233.pbsrc.com/albums/ff400/Ben_Yassa/fruits%20and%20veggies/' + slot2 + '.jpg~c200';
+	document.getElementById('image3').src =
+	'http://rs1233.pbsrc.com/albums/ff400/Ben_Yassa/fruits%20and%20veggies/' + slot3 + '.jpg~c200';
+
+        --Noofspins;
+        if ( Noofspins > 0 )
+        {
+            func=setTimeout(SpinSlots, 50);
+            return;
+        }
+
+	
+        var credits = document.getElementById('credits').innerHTML;
+        --credits; 
+
+	var msg = "YAY!";
+        var color = "red";
+
+
+         
+	if (slot1 == slot2 && slot2 == slot3)
+	{
+	    // oh nuts, she/he won
+    	    credits +=10;
+            msg = "You can play 10 more times!";
+            color = "blue";
+	}
+	else
+		   msg = "SPIN AGAIN!";
+ 	
+	document.getElementById('credits').innerHTML = credits;
+        var msgspan = document.getElementById("message");
+        msgspan.innerHTML = msg;
+        msgspan.style.color = color;
+
+        if ( credits <= 0 )
+        {
+             alert("GAME OVER!");
+        }
+
+     
+}
+function SpinStop()
+{
+	clearTimeout(func);
+}
+function reset()
+{
+	window.location.reload();
+}
+</script>
+
+
+
+<div style="text-align:center">
+<p>
+	<img id="image1" class="image" border=5 alt="slot image"
+	       src="http://rs1233.pbsrc.com/albums/ff400/Ben_Yassa/fruits%20and%20veggies/fruits-11-jerusalem.jpg~c200"/>
+	<img id="image2" class="image" border=5 alt="slot image"
+	       src="http://rs1233.pbsrc.com/albums/ff400/Ben_Yassa/fruits%20and%20veggies/fruits-12-berry-jerusalem.jpg~c200"/>
+	<img id="image3" class="image" border=5 alt="slot image"
+	       src="http://rs1233.pbsrc.com/albums/ff400/Ben_Yassa/fruits%20and%20veggies/fruits-13-jerusalem.jpg~c200"/>
+
+</p>
+
+<input type="button" class="button" value="SPIN" onclick="SpinSlots();">
+
+<br/><br/>
+<input type="button" class="button" value="STOP" onclick="SpinStop();">
+<br/><br/>
+<input type="button" class="button" value="RESET" onclick="reset();">
+
+<br/><br/>
+<span id="message" style="font-size: x-large; font-weight: bold;"></span>
+<br/><br/>
+<span style="font-size: x-large;font-weight: bold;">NO OF ATTEMPTS LEFT </span><span id="credits" style="font-size: x-large;font-weight: bold; color:blue;">20</span>
+</p>
+</div>
+</body>
+</html>
